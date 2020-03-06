@@ -6,14 +6,6 @@ module Pinboard
   TIME_CONVERTER = Time::Format.new(TIME_FORMAT)
 
   struct Post
-    property url,
-             title,
-             description,
-             meta,
-             hash,
-             time,
-             tags
-
     property? toread : Bool = false
     property? shared : Bool = true
     property? replace : Bool = true
@@ -31,21 +23,14 @@ module Pinboard
     })
 
     def initialize(
-      url : String,
-      title : String,
-      description : String = "",
-      time : Time = Time.utc_now,
-      shared : Bool = true,
-      toread : Bool = false,
-      tags : Array(String) = [] of String
+      @url : String,
+      @title : String,
+      @description : String = "",
+      @time : Time = Time.utc_now,
+      @shared = true,
+      @toread = false,
+      @tags : Array(String) = [] of String
     )
-      @url = url
-      @title = title
-      @description = description
-      @time = time
-      @shared = shared
-      @toread = toread
-      @tags = tags
       @meta = ""
       @hash = ""
     end
